@@ -2,7 +2,7 @@ import React from 'react';
 import './main-pages.css';
 import Main from './Main';
 import tv from '../images/tv.png';
-
+import Popular from './Popular';
 export default function Home() {
 	return (
 		<div>
@@ -19,6 +19,7 @@ export default function Home() {
 					<img src={tv} alt='tv' />
 				</div>
 			</div>
+			<Popular />
 		</div>
 	);
 }

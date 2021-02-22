@@ -62,3 +62,31 @@ p {
 .home-description p {
 	font-size: 17px;
 }
+/* movies display--------------------------------- */
+
+.movie-content {
+	margin-top: var(--pages-top-margin);
+}
+
+.movie-content h1 {
+	margin-left: 30px;
+	margin-bottom: var(--pages-bottom-margin);
+}
+
+.movies {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	overflow-x: auto;
+	height: 157px;
+}
+.movies img {
+	height: 150px;
+	border-radius: 5px;
+	transition: all 0.35s ease-in-out;
+	padding-right: 10px;
+}
+
+.movies img:hover {
+	transform: scale(1.02);
+}
