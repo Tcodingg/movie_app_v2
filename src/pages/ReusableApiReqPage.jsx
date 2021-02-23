@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './main-pages.css';
 
@@ -25,7 +26,9 @@ export default function ReusableApiReqPage(props) {
 			<h1>{title}</h1>
 			<div className='movies'>
 				{movieInfo.map((movie) => (
-					<img src={`${images}${movie.poster_path}`} alt='movieImage' />
+					<Link key={movie.id} to={`/details/${movie.id}`}>
+						<img src={`${images}${movie.poster_path}`} alt='movieImage' />
+					</Link>
 				))}
 			</div>
 		</div>

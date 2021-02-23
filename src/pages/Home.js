@@ -3,10 +3,10 @@ import './main-pages.css';
 import Main from './Main';
 import tv from '../images/tv.png';
 import Popular from './Popular';
+import TopRated from './TopRated';
 export default function Home() {
 	return (
 		<div>
-			<Main />
 			<div className='home-banner'>
 				<div className='home-description'>
 					<h1>Enjoy Your TV.</h1>
@@ -20,6 +20,7 @@ export default function Home() {
 				</div>
 			</div>
 			<Popular />
+			<TopRated />
 		</div>
 	);
 }
