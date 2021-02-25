@@ -11,8 +11,8 @@ export default function Home() {
 				<div className='home-description'>
 					<h1>Enjoy Your TV.</h1>
 					<p>
-						Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray
-						players, and more.
+						Watch on Smart TVs, Playstation, Xbox,
+						<span> Chromecast, Apple TV, Blu-ray players, and more.</span>
 					</p>
 				</div>
 				<div className='img-container'>

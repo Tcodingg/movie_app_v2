@@ -16,7 +16,6 @@ export default function Details({ match }) {
 		}
 		fetchMovie();
 	}, []);
-	// console.log(movieData);
 
 	return (
 		<div className='details'>

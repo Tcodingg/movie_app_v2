@@ -16,7 +16,7 @@ export default function ReusableApiReqPage(props) {
 				data: { results },
 			} = await axios.get(url, { params: { api_key: API_KEY } });
 
-			setMovieInfo(results);
+			setMovieInfo(results.filter((images) => images.poster_path !== null));
 		};
 		fetchMovie();
 	}, []);

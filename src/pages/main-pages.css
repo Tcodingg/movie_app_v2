@@ -92,3 +92,71 @@ p {
 .movies img:hover {
 	transform: scale(1.02);
 }
+
+/*---- iPad view----------------------------------------------- */
+@media (min-width: 768px) {
+	.home-banner {
+	}
+	.home-banner h1 {
+		font-size: 50px;
+	}
+	.home-banner p {
+		font-size: 25px;
+	}
+	.home-banner img {
+		max-height: 315px;
+		max-width: 500px;
+	}
+
+	/*----------pages----------*/
+	.movie-content h1 {
+		font-size: 25px;
+	}
+	.movies {
+		height: 210px;
+	}
+	.movies img {
+		height: 200px;
+	}
+}
+
+/*----laptops/desktops view----------------------------------------------- */
+@media screen and (min-width: 1140px) {
+	.home-banner {
+		flex-direction: row !important;
+		flex-wrap: wrap;
+		/* background: red; */
+	}
+
+	.home-description {
+		width: 50%;
+	}
+	.img-container {
+		width: 50%;
+	}
+
+	.home-banner h1 {
+		font-size: 60px;
+	}
+	.home-banner p {
+		font-size: 25px;
+	}
+	.home-banner p span {
+		display: inline-block;
+	}
+	.home-banner img {
+		max-height: 415px;
+		max-width: 600px;
+	}
+
+	/*----------pages----------*/
+	.movie-content h1 {
+		font-size: 25px;
+	}
+	.movies {
+		height: 310px;
+	}
+	.movies img {
+		height: 300px;
+	}
+}
