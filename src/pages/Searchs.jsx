@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 // import '../pages/sub-pages.css';
 import { useSelector } from 'react-redux';
-// import '../pages/sub-pages.css';
+import '../pages/sub-pages.css';
+
 export default function Searchs() {
 	const url = 'https://api.themoviedb.org/3/search/movie?';
 	const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
@@ -34,31 +36,18 @@ export default function Searchs() {
 	}, [movieName]);
 
 	return (
-		<div className='details'>
+		<div className='search'>
 			{movieData.map((movie) => {
 				return (
-					<div key={movie.id}>
-						<img src={`${images}${movie.poster_path}`} alt='' />
-						<div>
-							<h3>{movie.title} </h3>
-							<div className='rating-year'>
-								<h5>Rating: {movie.vote_average}</h5>
-								<h5>Year: {movie.release_date}</h5>
-							</div>
-
-							<p>{movie.overview} </p>
-						</div>
+					<div className='search-info' key={movie.id}>
+						<Link to={`details/${movie.id}`}>
+							<img src={`${images}${movie.poster_path}`} alt='' />
+						</Link>
+						<h3>{movie.title} </h3>
+						<h5>Rating: {movie.vote_average}</h5>{' '}
 					</div>
 				);
 			})}
-			{/* <h3>{movieData.title} </h3>
-			<img src={`${images}${movieData.poster_path}`} alt='' />
-			<div className='rating-year'>
-				<h5>Rating: {movieData.vote_average}</h5>
-				<h5>Year: {movieData.release_date}</h5>
-			</div>
-
-			<p>{movieData.overview} </p> */}
 		</div>
 	);
 }

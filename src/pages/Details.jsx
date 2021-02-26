@@ -13,26 +13,30 @@ export default function Details({ match }) {
 			const { data } = await axios.get(url);
 
 			setMovieData(data);
+			// console.log(data.genres[0].name);
 		}
 		fetchMovie();
 	}, []);
 
 	return (
 		<div className='details'>
-			<img src={`${images}${movieData.poster_path}`} alt='' />
+			<div className='details-img'>
+				<img src={`${images}${movieData.poster_path}`} alt='' />
+			</div>
+
 			<div className='movie-description'>
 				<h3>{movieData.title} </h3>
 
 				<p>{movieData.overview} </p>
 				<div className='rating-year'>
 					<div className='rating'>
-						<p>Rating:</p>
+						<p>Rating: </p>
 						<p>
 							<span>{movieData.vote_average}</span>
 						</p>
 					</div>
 					<div className='year'>
-						<p>Year:</p>
+						<p>Year: </p>
 						<p>
 							<span>{movieData.release_date}</span>
 						</p>
