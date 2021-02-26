@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../pages/sub-pages.css';
+// import '../pages/sub-pages.css';
 import { useSelector } from 'react-redux';
-import '../pages/sub-pages.css';
+// import '../pages/sub-pages.css';
 export default function Searchs() {
 	const url = 'https://api.themoviedb.org/3/search/movie?';
 	const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
@@ -34,18 +34,20 @@ export default function Searchs() {
 	}, [movieName]);
 
 	return (
-		<div>
+		<div className='details'>
 			{movieData.map((movie) => {
 				return (
-					<div key={movie.id} className='details'>
-						<h3>{movie.title} </h3>
+					<div key={movie.id}>
 						<img src={`${images}${movie.poster_path}`} alt='' />
-						<div className='rating-year'>
-							<h5>Rating: {movie.vote_average}</h5>
-							<h5>Year: {movie.release_date}</h5>
-						</div>
+						<div>
+							<h3>{movie.title} </h3>
+							<div className='rating-year'>
+								<h5>Rating: {movie.vote_average}</h5>
+								<h5>Year: {movie.release_date}</h5>
+							</div>
 
-						<p>{movie.overview} </p>
+							<p>{movie.overview} </p>
+						</div>
 					</div>
 				);
 			})}

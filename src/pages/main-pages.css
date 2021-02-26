@@ -85,7 +85,8 @@ p {
 	height: 150px;
 	border-radius: 5px;
 	transition: all 0.35s ease-in-out;
-	padding-right: 10px;
+	/* padding-right: 10px; */
+	margin: 5px;
 	padding-bottom: 10px;
 }
 
@@ -150,13 +151,19 @@ p {
 	}
 
 	/*----------pages----------*/
+
 	.movie-content h1 {
 		font-size: 25px;
 	}
 	.movies {
-		height: 310px;
+		height: 320px;
+		/* background: red; */
 	}
 	.movies img {
 		height: 300px;
+		padding: 0;
+
+		/* padding-right: 10px; */
+		margin: 5px;
 	}
 }

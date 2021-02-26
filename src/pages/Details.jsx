@@ -19,14 +19,26 @@ export default function Details({ match }) {
 
 	return (
 		<div className='details'>
-			<h3>{movieData.title} </h3>
 			<img src={`${images}${movieData.poster_path}`} alt='' />
-			<div className='rating-year'>
-				<h5>Rating: {movieData.vote_average}</h5>
-				<h5>Year: {movieData.release_date}</h5>
-			</div>
+			<div className='movie-description'>
+				<h3>{movieData.title} </h3>
 
-			<p>{movieData.overview} </p>
+				<p>{movieData.overview} </p>
+				<div className='rating-year'>
+					<div className='rating'>
+						<p>Rating:</p>
+						<p>
+							<span>{movieData.vote_average}</span>
+						</p>
+					</div>
+					<div className='year'>
+						<p>Year:</p>
+						<p>
+							<span>{movieData.release_date}</span>
+						</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }
