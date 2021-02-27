@@ -28,6 +28,21 @@
 	display: flex;
 	flex-direction: column;
 }
+
+.genres-container {
+	width: 100%;
+}
+.genres p {
+	margin: 0;
+	padding: 0;
+}
+.genres {
+	display: flex;
+	gap: 5px;
+
+	align-items: center;
+}
+
 .movie-description h3 {
 	/* margin-bottom: 5px; */
 	font-size: 25px;

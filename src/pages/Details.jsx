@@ -4,6 +4,7 @@ import './sub-pages.css';
 
 export default function Details({ match }) {
 	const [movieData, setMovieData] = useState([]);
+	const [movieGenres, setMovieGeneres] = useState([]);
 	const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
 	const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${API_KEY}`;
 	const images = 'https://image.tmdb.org/t/p/w500';
@@ -13,8 +14,9 @@ export default function Details({ match }) {
 			const { data } = await axios.get(url);
 
 			setMovieData(data);
-			// console.log(data.genres[0].name);
+			setMovieGeneres(data.genres.map((i) => i.name));
 		}
+
 		fetchMovie();
 	}, []);
 
@@ -28,6 +30,16 @@ export default function Details({ match }) {
 				<h3>{movieData.title} </h3>
 
 				<p>{movieData.overview} </p>
+				<div className='genres-container'>
+					<div className='genres'>
+						<p>Genre:</p>
+						{movieGenres.map((genres) => (
+							<div className='genres-name'>
+								<p>{genres}</p>
+							</div>
+						))}
+					</div>
+				</div>
 				<div className='rating-year'>
 					<div className='rating'>
 						<p>Rating: </p>
