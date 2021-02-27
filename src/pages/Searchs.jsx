@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // import '../pages/sub-pages.css';
 import { useSelector } from 'react-redux';
 import '../pages/sub-pages.css';
+import ReactStars from 'react-stars';
 
 export default function Searchs() {
 	const url = 'https://api.themoviedb.org/3/search/movie?';
@@ -44,7 +45,14 @@ export default function Searchs() {
 							<img src={`${images}${movie.poster_path}`} alt='' />
 						</Link>
 						<h3>{movie.title} </h3>
-						<h5>Rating: {movie.vote_average}</h5>{' '}
+						{/* <h5>Rating: {movie.vote_average}</h5>{' '} */}
+						<ReactStars
+							count={5}
+							size={24}
+							color2={'#ffd700'}
+							value={(movie.vote_average / 2).toFixed(1)}
+							edit={false}
+						/>
 					</div>
 				);
 			})}

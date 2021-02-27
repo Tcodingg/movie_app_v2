@@ -1,6 +1,10 @@
 * {
 	scrollbar-width: none;
 	-moz-appearance: none !important;
+	font-family: 'Open Sans', sans-serif;
+}
+body {
+	font-family: 'Open Sans', sans-serif;
 }
 
 :root {

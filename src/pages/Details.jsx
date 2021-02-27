@@ -1,58 +1,108 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './sub-pages.css';
+import ReactStars from 'react-stars';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function Details({ match }) {
 	const [movieData, setMovieData] = useState([]);
 	const [movieGenres, setMovieGeneres] = useState([]);
 	const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
 	const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${API_KEY}`;
+	const recommendURL = `https://api.themoviedb.org/3/movie/${match.params.id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`;
+
 	const images = 'https://image.tmdb.org/t/p/w500';
+
+	const [rating, setRating] = useState(0);
+	const [recommended, setRecommened] = useState([]);
+	const history = useHistory();
 
 	useEffect(() => {
 		async function fetchMovie() {
 			const { data } = await axios.get(url);
 
 			setMovieData(data);
-			setMovieGeneres(data.genres.map((i) => i.name));
+			setMovieGeneres(data.genres.map((i) => i));
+			setRating(() => (data.vote_average / 2).toFixed(1));
+			// rating.current = (data.vote_average / 2).toFixed(1);
 		}
-
 		fetchMovie();
+	}, [url]);
+
+	useEffect(() => {
+		const getRecommended = async () => {
+			const { data } = await axios.get(recommendURL);
+			setRecommened(data.results);
+		};
+		getRecommended();
 	}, []);
 
+	// function forceUpdate() {
+	// 	// history.push(`/details/${match.params.id}`);
+	// 	window.location.reload();
+	// }
+
 	return (
-		<div className='details'>
-			<div className='details-img'>
-				<img src={`${images}${movieData.poster_path}`} alt='' />
-			</div>
-
-			<div className='movie-description'>
-				<h3>{movieData.title} </h3>
-
-				<p>{movieData.overview} </p>
-				<div className='genres-container'>
-					<div className='genres'>
-						<p>Genre:</p>
-						{movieGenres.map((genres) => (
-							<div className='genres-name'>
-								<p>{genres}</p>
-							</div>
-						))}
+		<div>
+			<div className='details'>
+				<div className='details-img'>
+					<img
+						src={`${images}${movieData.poster_path}`}
+						alt={movieData.title}
+					/>
+				</div>
+				<div className='movie-description'>
+					<h3>{movieData.title} </h3>
+					<p>{movieData.overview} </p>
+					<div className='genres-container'>
+						<div className='genres'>
+							<p>Genre:</p>
+							{movieGenres.map((genres) => (
+								<div key={genres.id} className='genres-name'>
+									<p>{genres.name}</p>
+								</div>
+							))}
+						</div>
+					</div>
+					<div className='rating-year'>
+						<div className='rating'>
+							<span>
+								<ReactStars
+									count={5}
+									size={24}
+									color2={'#ffd700'}
+									value={rating}
+									edit={false}
+								/>
+							</span>
+						</div>
 					</div>
 				</div>
-				<div className='rating-year'>
-					<div className='rating'>
-						<p>Rating: </p>
-						<p>
-							<span>{movieData.vote_average}</span>
-						</p>
-					</div>
-					<div className='year'>
-						<p>Year: </p>
-						<p>
-							<span>{movieData.release_date}</span>
-						</p>
-					</div>
+			</div>
+			<div className='recommended'>
+				<h1 style={{ margin: '30px 10% 0 10%' }}>Recommended</h1>
+				<div className='search'>
+					{recommended.map((movie) => {
+						return (
+							<div className='search-info' key={movie.id}>
+								<Link
+									onClick={() => window.location.reload()}
+									to={`/details/${movie.id}`}
+								>
+									<img src={`${images}${movie.poster_path}`} alt='' />
+								</Link>
+								<h3>{movie.title} </h3>
+								{/* <h5>Rating: {movie.vote_average}</h5>{' '} */}
+								<ReactStars
+									count={5}
+									size={24}
+									color2={'#ffd700'}
+									value={(movie.vote_average / 2).toFixed(1)}
+									edit={false}
+								/>
+							</div>
+						);
+					})}
 				</div>
 			</div>
 		</div>
