@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 // import '../pages/sub-pages.css';
 import { useSelector } from 'react-redux';
 import '../pages/sub-pages.css';
 import ReactStars from 'react-stars';
 
-export default function Searchs() {
+export default function Searchs(props) {
 	const url = 'https://api.themoviedb.org/3/search/movie?';
 	const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
 
 	const [movieData, setMovieData] = useState([]);
 	const images = 'https://image.tmdb.org/t/p/w500';
 	const movieName = useSelector((state) => state.inputReducer);
+	let history = useHistory();
+	let location = useLocation();
 
 	useEffect(() => {
 		if (!movieName) {
@@ -30,7 +32,9 @@ export default function Searchs() {
 				});
 				setMovieData(results.filter((images) => images.poster_path !== null));
 			}
+
 			fetchData();
+			console.log(location);
 		} catch (error) {
 			console.log(error);
 		}
@@ -45,12 +49,11 @@ export default function Searchs() {
 							<img src={`${images}${movie.poster_path}`} alt='' />
 						</Link>
 						<h3>{movie.title} </h3>
-						{/* <h5>Rating: {movie.vote_average}</h5>{' '} */}
 						<ReactStars
 							count={5}
 							size={24}
 							color2={'#ffd700'}
-							value={(movie.vote_average / 2).toFixed(1)}
+							value={Number((movie.vote_average / 2).toFixed(1))}
 							edit={false}
 						/>
 					</div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './main-pages.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { inputAction } from '../tools/redux/action';
 // import { movieName } from './redux/action';
@@ -15,11 +15,19 @@ export default function Main() {
 		if (e.key === 'Enter' && input.length > 0) {
 			setMovieName(input);
 			dispatch(inputAction(input));
-			history.push('/searchs');
+			history.push(`/searchs?search=${input}`);
 
-			// setMovieName(input);
+			// history.push({
+			// 	pathname: `/searchs?search=${input}`,
+			// 	params: `/searchs/${input}`,
+			// });
+			// location.pathname = `/searchs/${input}`;
+			// history.push(`/searchs/query=${input}`);
+			// console.log(location);
 		}
 	}
+	let location = useLocation();
+
 	function handleInput(e) {
 		const inputVal = e.target.value;
 

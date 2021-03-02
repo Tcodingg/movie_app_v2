@@ -1,7 +1,6 @@
 import './App.css';
 import Home from './pages/Home';
 import Main from './pages/Main';
-import Seachs from './pages/Searchs';
 import Details from './pages/Details';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Searchs from './pages/Searchs';

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './sub-pages.css';
 import ReactStars from 'react-stars';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 export default function Details({ match }) {
 	const [movieData, setMovieData] = useState([]);
@@ -23,8 +23,7 @@ export default function Details({ match }) {
 
 			setMovieData(data);
 			setMovieGeneres(data.genres.map((i) => i));
-			setRating(() => (data.vote_average / 2).toFixed(1));
-			// rating.current = (data.vote_average / 2).toFixed(1);
+			setRating(() => Number((data.vote_average / 2).toFixed(1)));
 		}
 		fetchMovie();
 	}, [url]);
@@ -37,11 +36,8 @@ export default function Details({ match }) {
 		getRecommended();
 	}, []);
 
-	// function forceUpdate() {
-	// 	// history.push(`/details/${match.params.id}`);
-	// 	window.location.reload();
-	// }
-
+	const location = useLocation();
+	console.log(location);
 	return (
 		<div>
 			<div className='details'>
@@ -80,24 +76,25 @@ export default function Details({ match }) {
 				</div>
 			</div>
 			<div className='recommended'>
-				<h1 style={{ margin: '30px 10% 0 10%' }}>Recommended</h1>
+				<h1 style={{ margin: '60px 10% 0 10%' }}>Recommended</h1>
 				<div className='search'>
 					{recommended.map((movie) => {
 						return (
-							<div className='search-info' key={movie.id}>
-								<Link
-									onClick={() => window.location.reload()}
-									to={`/details/${movie.id}`}
-								>
-									<img src={`${images}${movie.poster_path}`} alt='' />
+							<div
+								onClick={() => window.location.reload()}
+								// onClick={() => props.history.goBack()}
+								className='search-info'
+								key={movie.id}
+							>
+								<Link to={`/details/${movie.id}`}>
+									<img src={`${images}${movie.poster_path}`} alt='loading...' />
 								</Link>
 								<h3>{movie.title} </h3>
-								{/* <h5>Rating: {movie.vote_average}</h5>{' '} */}
 								<ReactStars
 									count={5}
 									size={24}
 									color2={'#ffd700'}
-									value={(movie.vote_average / 2).toFixed(1)}
+									value={Number((movie.vote_average / 2).toFixed(1))}
 									edit={false}
 								/>
 							</div>
