@@ -37,7 +37,7 @@ export default function Details({ match }) {
 	}, []);
 
 	const location = useLocation();
-	console.log(location);
+	console.log(location.pathname);
 	return (
 		<div>
 			<div className='details'>

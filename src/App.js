@@ -12,7 +12,8 @@ function App() {
 				<Main />
 				<Switch>
 					<Route path='/' exact component={Home} />
-					<Route path='/searchs' component={Searchs} />
+					<Route exact path='/search/query=:query' component={Searchs} />
+
 					<Route path='/details/:id' component={Details} />
 				</Switch>
 			</Router>

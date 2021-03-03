@@ -5,6 +5,7 @@ import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../pages/sub-pages.css';
 import ReactStars from 'react-stars';
+import queryString from 'query-string';
 
 export default function Searchs(props) {
 	const url = 'https://api.themoviedb.org/3/search/movie?';
@@ -15,9 +16,12 @@ export default function Searchs(props) {
 	const movieName = useSelector((state) => state.inputReducer);
 	let history = useHistory();
 	let location = useLocation();
+	let { query } = useParams();
+
+	// const { page } = queryString.parse(location.hash);
 
 	useEffect(() => {
-		if (!movieName) {
+		if (!query) {
 			return;
 		}
 		try {
@@ -27,25 +31,25 @@ export default function Searchs(props) {
 				} = await axios.get(url, {
 					params: {
 						api_key: API_KEY,
-						query: movieName,
+						query: query,
 					},
 				});
 				setMovieData(results.filter((images) => images.poster_path !== null));
 			}
 
 			fetchData();
-			console.log(location);
 		} catch (error) {
 			console.log(error);
 		}
-	}, [movieName]);
+	}, [movieName, query, location, history]);
+	console.log(query);
 
 	return (
 		<div className='search'>
 			{movieData.map((movie) => {
 				return (
 					<div className='search-info' key={movie.id}>
-						<Link to={`details/${movie.id}`}>
+						<Link to={`/details/${movie.id}`}>
 							<img src={`${images}${movie.poster_path}`} alt='' />
 						</Link>
 						<h3>{movie.title} </h3>
