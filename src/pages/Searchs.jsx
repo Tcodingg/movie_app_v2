@@ -18,8 +18,6 @@ export default function Searchs(props) {
 	let location = useLocation();
 	let { query } = useParams();
 
-	// const { page } = queryString.parse(location.hash);
-
 	useEffect(() => {
 		if (!query) {
 			return;
@@ -36,7 +34,6 @@ export default function Searchs(props) {
 				});
 				setMovieData(results.filter((images) => images.poster_path !== null));
 			}
-
 			fetchData();
 		} catch (error) {
 			console.log(error);

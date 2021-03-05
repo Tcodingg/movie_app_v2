@@ -110,6 +110,9 @@ body {
 	.search {
 		grid-template-columns: repeat(3, 1fr);
 	}
+	.player-wrapper {
+		height: 360px;
+	}
 }
 
 /*--------------------- laptop/desktop view----------------- */
@@ -121,7 +124,8 @@ body {
 		width: 35%;
 	}
 	.movie-description {
-		justify-content: center;
+		margin-top: 30px;
+		justify-content: flex-start;
 		margin-left: 20px;
 
 		width: 65%;
@@ -133,6 +137,9 @@ body {
 	}
 	.movie-description p {
 		font-size: 16px;
+	}
+	.player-wrapper {
+		max-width: 910px;
 	}
 	/* search page---------------------------- */
 	.search {

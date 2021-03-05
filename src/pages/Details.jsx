@@ -3,18 +3,25 @@ import axios from 'axios';
 import './sub-pages.css';
 import ReactStars from 'react-stars';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import YouTube from 'react-youtube';
+import YoutubeVideo from './YoutubeVideo';
+import ResponsiveVideoPlayer from './ResponsiveVideoPlayer';
 
 export default function Details({ match }) {
 	const [movieData, setMovieData] = useState([]);
 	const [movieGenres, setMovieGeneres] = useState([]);
+
 	const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
 	const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${API_KEY}`;
 	const recommendURL = `https://api.themoviedb.org/3/movie/${match.params.id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`;
+	const trailerUrl = `http://api.themoviedb.org/3/movie/${match.params.id}/videos?api_key=${API_KEY}`;
 
 	const images = 'https://image.tmdb.org/t/p/w500';
 
 	const [rating, setRating] = useState(0);
 	const [recommended, setRecommened] = useState([]);
+	const [trailer, setTrailer] = useState('');
+	const youtubeLink = 'https://www.youtube.com/watch?v=';
 	const history = useHistory();
 
 	useEffect(() => {
@@ -36,17 +43,51 @@ export default function Details({ match }) {
 		getRecommended();
 	}, []);
 
+	useEffect(() => {
+		const getVideo = async () => {
+			const {
+				data: { results },
+			} = await axios.get(trailerUrl);
+			setTrailer(youtubeLink + results[0].key);
+
+			// console.log(results[0].key);
+		};
+		getVideo();
+		console.log(trailer);
+	}, [trailer]);
+
 	const location = useLocation();
-	console.log(location.pathname);
+	// console.log(location.pathname);
+
 	return (
 		<div>
 			<div className='details'>
-				<div className='details-img'>
+				{/* <div className='details-img'>
 					<img
 						src={`${images}${movieData.poster_path}`}
 						alt={movieData.title}
 					/>
+				</div> */}
+				<div
+					className='trailer'
+					style={{
+						margin: '0',
+						width: '100%',
+						height: '100%',
+
+						// background: 'blue',
+
+						display: 'flex',
+					}}
+				>
+					<div className='' style={{ width: '100%', height: 'auto' }}>
+						<ResponsiveVideoPlayer url={trailer} />
+					</div>
+					{/* <div style={{ display: 'flex', justifyContent: 'center' }}>
+						<YoutubeVideo videoId={trailer} />
+					</div> */}
 				</div>
+
 				<div className='movie-description'>
 					<h3>{movieData.title} </h3>
 					<p>{movieData.overview} </p>
@@ -75,6 +116,15 @@ export default function Details({ match }) {
 					</div>
 				</div>
 			</div>
+
+			{/* <div className='trailer' style={{ margin: '0 10%' }}>
+				<h3>Trailer</h3>
+
+				<div style={{ display: 'flex', justifyContent: 'center' }}>
+					<YoutubeVideo videoId={trailer} />
+				</div>
+			</div> */}
+
 			<div className='recommended'>
 				<h1 style={{ margin: '60px 10% 0 10%' }}>Recommended</h1>
 				<div className='search'>
