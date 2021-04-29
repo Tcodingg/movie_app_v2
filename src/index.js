@@ -10,10 +10,10 @@ import { BrowserRouter, HashRouter } from 'react-router-dom';
 const localStore = createStore(allReducers);
 
 ReactDOM.render(
-	<BrowserRouter>
+	<HashRouter>
 		<Provider store={localStore}>
 			<App />
 		</Provider>
-	</BrowserRouter>,
+	</HashRouter>,
 	document.getElementById('root')
 );
