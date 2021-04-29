@@ -3,7 +3,6 @@ import axios from 'axios';
 import './sub-pages.css';
 import ReactStars from 'react-stars';
 import { Link } from 'react-router-dom';
-
 import ResponsiveVideoPlayer from './ResponsiveVideoPlayer';
 
 export default function Details({ match }) {
