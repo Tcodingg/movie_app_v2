@@ -46,7 +46,7 @@ export default function Searchs(props) {
 			{movieData.map((movie) => {
 				return (
 					<div className='search-info' key={movie.id}>
-						<Link to={`/movie_app_v2/details/${movie.id}`}>
+						<Link to={`/details/${movie.id}`}>
 							<img src={`${images}${movie.poster_path}`} alt='' />
 						</Link>
 						<h3>{movie.title} </h3>

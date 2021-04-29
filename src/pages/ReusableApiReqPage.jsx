@@ -26,7 +26,7 @@ export default function ReusableApiReqPage(props) {
 			<h1>{title}</h1>
 			<div className='movies'>
 				{movieInfo.map((movie) => (
-					<Link key={movie.id} to={`/movie_app_v2/details/${movie.id}`}>
+					<Link key={movie.id} to={`/details/${movie.id}`}>
 						<img src={`${images}${movie.poster_path}`} alt='movieImage' />
 					</Link>
 				))}
