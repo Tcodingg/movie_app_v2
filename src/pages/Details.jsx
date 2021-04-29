@@ -56,36 +56,21 @@ export default function Details({ match }) {
 		console.log(trailer);
 	}, [trailer]);
 
-	const location = useLocation();
-	// console.log(location.pathname);
-
 	return (
 		<div>
 			<div className='details'>
-				{/* <div className='details-img'>
-					<img
-						src={`${images}${movieData.poster_path}`}
-						alt={movieData.title}
-					/>
-				</div> */}
 				<div
 					className='trailer'
 					style={{
 						margin: '0',
 						width: '100%',
 						height: '100%',
-
-						// background: 'blue',
-
 						display: 'flex',
 					}}
 				>
 					<div className='' style={{ width: '100%', height: 'auto' }}>
 						<ResponsiveVideoPlayer url={trailer} />
 					</div>
-					{/* <div style={{ display: 'flex', justifyContent: 'center' }}>
-						<YoutubeVideo videoId={trailer} />
-					</div> */}
 				</div>
 
 				<div className='movie-description'>
@@ -116,15 +101,6 @@ export default function Details({ match }) {
 					</div>
 				</div>
 			</div>
-
-			{/* <div className='trailer' style={{ margin: '0 10%' }}>
-				<h3>Trailer</h3>
-
-				<div style={{ display: 'flex', justifyContent: 'center' }}>
-					<YoutubeVideo videoId={trailer} />
-				</div>
-			</div> */}
-
 			<div className='recommended'>
 				<h1 style={{ margin: '60px 10% 0 10%' }}>Recommended</h1>
 				<div className='search'>
