@@ -15,18 +15,6 @@ export default function Main(props) {
 		if (e.key === 'Enter' && input.length > 0) {
 			setMovieName(input);
 			dispatch(inputAction(input));
-			// history.push(`/searchs?search=${input}`);
-
-			// history.push(`/search?/search=${input}`);
-
-			// history.push({
-			// 	pathname: `/searchs?search=${input}`,
-			// 	params: `/searchs/${input}`,
-			// });
-			// location.pathname = `/searchs/${input}`;
-			// history.push(`/searchs/query=${input}`);
-			// console.log(location);
-
 			history.push(`/search/query=${input}`);
 			setInput('');
 		}

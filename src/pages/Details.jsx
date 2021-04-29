@@ -136,7 +136,7 @@ export default function Details({ match }) {
 								className='search-info'
 								key={movie.id}
 							>
-								<Link to={`/details/${movie.id}`}>
+								<Link to={`/movie_app_v2/details/${movie.id}`}>
 									<img src={`${images}${movie.poster_path}`} alt='loading...' />
 								</Link>
 								<h3>{movie.title} </h3>
