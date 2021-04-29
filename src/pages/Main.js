@@ -15,7 +15,7 @@ export default function Main(props) {
 		if (e.key === 'Enter' && input.length > 0) {
 			setMovieName(input);
 			dispatch(inputAction(input));
-			history.push(`/search/query=${input}`);
+			history.push(`/movie_app_v2/search/query=${input}`);
 			setInput('');
 		}
 	}

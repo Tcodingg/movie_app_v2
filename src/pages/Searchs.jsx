@@ -39,14 +39,14 @@ export default function Searchs(props) {
 			console.log(error);
 		}
 	}, [movieName, query, location, history]);
-	console.log(query);
+	// console.log(query);
 
 	return (
 		<div className='search'>
 			{movieData.map((movie) => {
 				return (
 					<div className='search-info' key={movie.id}>
-						<Link to={`/details/${movie.id}`}>
+						<Link to={`/movie_app_v2/details/${movie.id}`}>
 							<img src={`${images}${movie.poster_path}`} alt='' />
 						</Link>
 						<h3>{movie.title} </h3>
