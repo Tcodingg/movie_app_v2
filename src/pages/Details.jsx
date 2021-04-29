@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './sub-pages.css';
 import ReactStars from 'react-stars';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import YouTube from 'react-youtube';
-import YoutubeVideo from './YoutubeVideo';
+import { Link } from 'react-router-dom';
+
 import ResponsiveVideoPlayer from './ResponsiveVideoPlayer';
 
 export default function Details({ match }) {
@@ -22,7 +21,6 @@ export default function Details({ match }) {
 	const [recommended, setRecommened] = useState([]);
 	const [trailer, setTrailer] = useState('');
 	const youtubeLink = 'https://www.youtube.com/watch?v=';
-	const history = useHistory();
 
 	useEffect(() => {
 		async function fetchMovie() {
@@ -50,10 +48,9 @@ export default function Details({ match }) {
 			} = await axios.get(trailerUrl);
 			setTrailer(youtubeLink + results[0].key);
 
-			// console.log(results[0].key);
+			console.log(results[0].key);
 		};
 		getVideo();
-		console.log(trailer);
 	}, [trailer]);
 
 	return (

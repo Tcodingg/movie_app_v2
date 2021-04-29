@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './main-pages.css';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { inputAction } from '../tools/redux/action';
 // import { movieName } from './redux/action';
 
@@ -15,7 +15,7 @@ export default function Main(props) {
 		if (e.key === 'Enter' && input.length > 0) {
 			setMovieName(input);
 			dispatch(inputAction(input));
-			history.push(`/movie_app_v2/search/query=${input}`);
+			history.push(`/search/query=${input}`);
 			setInput('');
 		}
 	}
