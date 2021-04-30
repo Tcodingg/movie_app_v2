@@ -47,7 +47,7 @@ export default function Details({ match }) {
 			} = await axios.get(trailerUrl);
 			setTrailer(youtubeLink + results[0].key);
 
-			console.log(results[0].key);
+			// console.log(results[0].key);
 		};
 		getVideo();
 	}, [trailer]);
@@ -73,8 +73,8 @@ export default function Details({ match }) {
 					<h3>{movieData.title} </h3>
 					<p>{movieData.overview} </p>
 					<div className='genres-container'>
+						<p>Genre:</p>
 						<div className='genres'>
-							<p>Genre:</p>
 							{movieGenres.map((genres) => (
 								<div key={genres.id} className='genres-name'>
 									<p>{genres.name}</p>

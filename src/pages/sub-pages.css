@@ -36,18 +36,14 @@ body {
 }
 
 .genres-container {
-	width: 100%;
-}
-.genres p {
-	font-family: 'Open Sans', sans-serif;
-	margin: 0;
-	padding: 0;
+	margin-top: 1rem;
 }
 .genres {
 	display: flex;
-	gap: 5px;
-
-	align-items: center;
+	flex-wrap: wrap;
+}
+.genres-name {
+	margin-right: 1rem;
 }
 
 .movie-description h3 {
