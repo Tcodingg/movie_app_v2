@@ -73,13 +73,18 @@ export default function Details({ match }) {
 					<h3>{movieData.title} </h3>
 					<p>{movieData.overview} </p>
 					<div className='genres-container'>
-						<p>Genre:</p>
+						<div>
+							<p>Genre:</p>
+						</div>
+
 						<div className='genres'>
-							{movieGenres.map((genres) => (
-								<div key={genres.id}>
-									<p className='genres-name'>{genres.name}</p>
-								</div>
-							))}
+							{movieGenres.map((movie, index) => {
+								return (
+									<p className='genres-title' key={index}>
+										{movie.name}
+									</p>
+								);
+							})}
 						</div>
 					</div>
 					<div className='rating-year'>
