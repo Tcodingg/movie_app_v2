@@ -2,12 +2,12 @@ import React from 'react';
 import './main-pages.css';
 import Main from './Main';
 import tv from '../images/tv.png';
-import Popular from './Popular';
-import TopRated from './TopRated';
-import NowPlaying from './NowPlaying';
 
+import { MoviesData } from './MoviesData';
+import ReusableApiReqPage from './ReusableApiReqPage';
 
 export default function Home() {
+	console.log(MoviesData);
 	return (
 		<div>
 			<div className='home-banner'>
@@ -22,9 +22,13 @@ export default function Home() {
 					<img src={tv} alt='tv' />
 				</div>
 			</div>
-			<NowPlaying />
-			<TopRated />
-			<Popular />
+			{MoviesData.map((movie, index) => {
+				return (
+					<div key={index}>
+						<ReusableApiReqPage url={movie.url} title={movie.title} />
+					</div>
+				);
+			})}
 		</div>
 	);
 }
