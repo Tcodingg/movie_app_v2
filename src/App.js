@@ -1,9 +1,9 @@
 import './style/App.css';
-import Home from './pages/Home';
-import Main from './pages/Main';
-import Details from './pages/Details';
+import Home from './components/Home';
+import Main from './components/Main';
+import Details from './components/Details';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import Searchs from './pages/Searchs';
+import Searchs from './components/Searchs';
 
 function App() {
 	return (
