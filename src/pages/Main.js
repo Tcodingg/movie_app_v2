@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './main-pages.css';
+import '../style/main-pages.css';
+
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { inputAction } from '../tools/redux/action';

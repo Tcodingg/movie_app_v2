@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './sub-pages.css';
+import '../style/sub-pages.css';
 import ReactStars from 'react-stars';
 import { Link } from 'react-router-dom';
-import ResponsiveVideoPlayer from './ResponsiveVideoPlayer';
+import ResponsiveVideoPlayer from '../tools/reusable/ResponsiveVideoPlayer';
 
 export default function Details({ match }) {
 	const [movieData, setMovieData] = useState([]);

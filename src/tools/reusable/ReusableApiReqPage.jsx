@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './main-pages.css';
+import '../../style/main-pages.css';
 
 export default function ReusableApiReqPage(props) {
 	const url = props.url;

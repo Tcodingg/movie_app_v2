@@ -1,10 +1,10 @@
 import React from 'react';
-import './main-pages.css';
-import Main from './Main';
+// import Main from './Main';
 import tv from '../images/tv.png';
+import '../style/main-pages.css';
 
-import { MoviesData } from './MoviesData';
-import ReusableApiReqPage from './ReusableApiReqPage';
+import { MoviesData } from '../tools/data/MoviesData';
+import ReusableApiReqPage from '../tools/reusable/ReusableApiReqPage';
 
 export default function Home() {
 	console.log(MoviesData);

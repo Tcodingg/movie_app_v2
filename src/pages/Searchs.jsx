@@ -3,9 +3,9 @@ import axios from 'axios';
 import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 // import '../pages/sub-pages.css';
 import { useSelector } from 'react-redux';
-import '../pages/sub-pages.css';
+import '../style/sub-pages.css';
 import ReactStars from 'react-stars';
-import queryString from 'query-string';
+// import queryString from 'query-string';
 
 export default function Searchs(props) {
 	const url = 'https://api.themoviedb.org/3/search/movie?';
