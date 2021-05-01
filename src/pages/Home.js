@@ -4,6 +4,9 @@ import Main from './Main';
 import tv from '../images/tv.png';
 import Popular from './Popular';
 import TopRated from './TopRated';
+import NowPlaying from './NowPlaying';
+
+
 export default function Home() {
 	return (
 		<div>
@@ -19,8 +22,9 @@ export default function Home() {
 					<img src={tv} alt='tv' />
 				</div>
 			</div>
-			<Popular />
+			<NowPlaying />
 			<TopRated />
+			<Popular />
 		</div>
 	);
 }

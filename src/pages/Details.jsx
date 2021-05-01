@@ -76,8 +76,8 @@ export default function Details({ match }) {
 						<p>Genre:</p>
 						<div className='genres'>
 							{movieGenres.map((genres) => (
-								<div key={genres.id} className='genres-name'>
-									<p>{genres.name}</p>
+								<div key={genres.id}>
+									<p className='genres-name'>{genres.name}</p>
 								</div>
 							))}
 						</div>
