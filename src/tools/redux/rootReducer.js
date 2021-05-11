@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
-import { inputReducer } from './reducer';
+import { movieReducer } from './reducer';
 
-export const allReducers = combineReducers({ inputReducer });
+export const allReducers = combineReducers({ movieReducer });

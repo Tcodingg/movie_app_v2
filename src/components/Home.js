@@ -1,13 +1,10 @@
 import React from 'react';
-// import Main from './Main';
 import tv from '../images/tv.png';
 import '../style/main-pages.css';
 
-import { MoviesData } from '../tools/data/MoviesData';
-import ReusableApiReqPage from '../tools/reusable/ReusableApiReqPage';
+import MoviesByCategories from '../tools/reusable/moviesByCategories';
 
 export default function Home() {
-	console.log(MoviesData);
 	return (
 		<div>
 			<div className='home-banner'>
@@ -22,13 +19,9 @@ export default function Home() {
 					<img src={tv} alt='tv' />
 				</div>
 			</div>
-			{MoviesData.map((movie, index) => {
-				return (
-					<div key={index}>
-						<ReusableApiReqPage url={movie.url} title={movie.title} />
-					</div>
-				);
-			})}
+			<div>
+				<MoviesByCategories />
+			</div>
 		</div>
 	);
 }

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../style/main-pages.css';
+import { fetchMovies } from '../redux/action';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ReusableApiReqPage(props) {
 	const url = props.url;
@@ -10,16 +12,19 @@ export default function ReusableApiReqPage(props) {
 	const images = 'https://image.tmdb.org/t/p/w500';
 	const [movieInfo, setMovieInfo] = useState([]);
 
+	const dispatch = useDispatch();
+
 	useEffect(() => {
 		const fetchMovie = async () => {
+			// dispatch(fetchMovies());
 			const {
 				data: { results },
 			} = await axios.get(url, { params: { api_key: API_KEY } });
-
+			// console.log(results);
 			setMovieInfo(results.filter((images) => images.poster_path !== null));
 		};
 		fetchMovie();
-	}, []);
+	}, [dispatch, url, API_KEY]);
 
 	return (
 		<div className='movie-content'>
