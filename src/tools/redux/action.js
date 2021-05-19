@@ -5,11 +5,15 @@ export function inputAction(inputMovie) {
 		payload: inputMovie,
 	};
 }
-
+// API KEY
 const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
-const topRatedUrl = 'https://api.themoviedb.org/3/movie/top_rated';
-const popularUrl = 'https://api.themoviedb.org/3/movie/popular';
-const nowPlayingUrl = 'https://api.themoviedb.org/3/movie/now_playing';
+
+// URLs
+const topRatedUrl = process.env.REACT_APP_TOP_RATED_URL;
+const popularUrl = process.env.REACT_APP_POPULAR_URL;
+const nowPlayingUrl = process.env.REACT_APP_NOW_PLAYING_URL;
+
+// Fetch movies
 export const fetchMovies = () => async (dispatch, getState) => {
 	dispatch({ type: 'FETCH_MOVIES_REQUEST' });
 	try {
