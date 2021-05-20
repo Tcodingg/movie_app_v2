@@ -12,6 +12,7 @@ export default function Details({ match }) {
 	const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
 	const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${API_KEY}`;
 	const recommendURL = `https://api.themoviedb.org/3/movie/${match.params.id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`;
+
 	const trailerUrl = `http://api.themoviedb.org/3/movie/${match.params.id}/videos?api_key=${API_KEY}`;
 
 	const images = 'https://image.tmdb.org/t/p/w500';
@@ -34,8 +35,14 @@ export default function Details({ match }) {
 
 	useEffect(() => {
 		const getRecommended = async () => {
-			const { data } = await axios.get(recommendURL);
+			const { data } = await axios.get(recommendURL, {
+				params: {
+					movie_id: match.params.id,
+					api_key: API_KEY,
+				},
+			});
 			setRecommened(data.results);
+			console.log(data);
 		};
 		getRecommended();
 	}, []);

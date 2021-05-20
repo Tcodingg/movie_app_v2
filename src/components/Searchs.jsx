@@ -8,11 +8,11 @@ import ReactStars from 'react-stars';
 // import queryString from 'query-string';
 
 export default function Searchs(props) {
-	const url = 'https://api.themoviedb.org/3/search/movie?';
+	const url = process.env.REACT_APP_SEARCH_MOVIES;
 	const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
 
 	const [movieData, setMovieData] = useState([]);
-	const images = 'https://image.tmdb.org/t/p/w500';
+	const images = process.env.REACT_APP_IMAGES;
 	const movieName = useSelector((state) => state.inputReducer);
 	let history = useHistory();
 	let location = useLocation();
